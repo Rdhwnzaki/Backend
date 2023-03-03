@@ -29,7 +29,6 @@ app.use(xss());
 
 app.use(bodyParser.json());
 app.use("/", mainRouter);
-app.use("/img", express.static("./upload"));
 
 app.all("*", (req, res) => {
   resp(res, 404, false, "404 Not Found");
