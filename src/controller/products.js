@@ -1,4 +1,3 @@
-// const { createClient } = require("redis");
 const modelProduct = require("../model/products");
 const { response } = require("../middleware/common");
 const { resp } = require("../middleware/common");

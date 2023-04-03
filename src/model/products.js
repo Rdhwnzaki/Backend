@@ -40,23 +40,6 @@ const updateDataProduct = (id_product, dataProducts) => {
 
 const deleteDataProduct = (id_product) =>
   Pool.query(`DELETE FROM product where id_product='${id_product}'`);
-
-const getProductByUser = (user_id, page, limit, sort, sortby, search) =>
-  new Promise((resolve, reject) => {
-    const offset = (page - 1) * limit;
-    Pool.query(
-      `select products.id_product,products.name_product,products.stock_product,products.price_product,products.brand_product,products.description_product,category.name_category as category,products.photo_product
-      FROM products
-      INNER JOIN category
-      ON products.category_id = category.id_category WHERE user_id = '${user_id}'AND archived=0 AND (name_product) ilike '%${search}%' order by ${sortby} ${sort} limit ${limit} offset ${offset}`,
-      (err, res) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(res);
-      }
-    );
-  });
 module.exports = {
   selectDataProduct,
   insertDataProduct,
